@@ -1,7 +1,5 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Products from "@/app/dashboard/products/page";
-import Users from "@/app/dashboard/users/page";
 import MenuLinks from "../menuLinks";
 
 type Props = {};
