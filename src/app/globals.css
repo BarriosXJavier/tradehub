@@ -18,6 +18,7 @@
 body {
   background-color: var(--bgMain);
   color: var(--text);
+  list-style: none;
 }
 
 a {
