@@ -2,11 +2,13 @@ import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import MenuLinks from "../menuLinks";
 
-type Props = {};
+interface SidebarProps {
+  className?: String,
+}
 
-const Sidebar = (props: Props) => {
+const Sidebar: React.FC<SidebarProps> = () => {
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col p-4">
       <div className="flex gap-2">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />

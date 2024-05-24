@@ -4,7 +4,11 @@ import { Bell, Search, MessageSquareText } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Input } from "@/components/ui/input";
 
-const Dashnav: React.FC = () => {
+interface DashnavProps {
+  className?: String,
+}
+
+const Dashnav: React.FC<DashnavProps> = () => {
   const pathname = usePathname();
   return (
     <nav className="bg-[#182237] flex h-10 justify-between items-center p-10 w-full">

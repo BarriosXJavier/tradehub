@@ -4,7 +4,9 @@ type Props = {}
 
 const Help = (props: Props) => {
   return (
-    <div>Help</div>
+    <div>
+      <h1>Welcome to our help page, start here</h1>
+    </div>
   )
 }
 

@@ -13,20 +13,19 @@ import {
 const MenuLinks: React.FC = () => {
   const menuItem = (href: string, icon: React.ReactNode, label: string) => (
     <li>
-      <Link href={href}
-        
-          className="flex space-x-2 hover:bg-slate-700 active:bg-slate-800 py-4 text-sm items-center"
-          aria-label={label}
-        >
-          {icon}
-          <span>{label}</span>
-        
+      <Link
+        href={href}
+        className="flex space-x-2 hover:bg-slate-700 active:bg-slate-800 p-4 text-sm items-center justify-start"
+        aria-label={label}
+      >
+        {icon}
+        <span>{label}</span>
       </Link>
     </li>
   );
 
   return (
-    <>
+    <div>
       <ul className="flex flex-col p-4 space-y-1">
         <h2 className="font-bold">Pages</h2>
         {menuItem("../../dashboard/", <LayoutGrid />, "Dashboard")}
@@ -47,7 +46,7 @@ const MenuLinks: React.FC = () => {
       <ul className="flex flex-col p-4 space-y-1">
         {menuItem("../../dashboard/logout", <LogOut />, "Logout")}
       </ul>
-    </>
+    </div>
   );
 };
 
