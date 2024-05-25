@@ -1,8 +1,9 @@
-import React from "react";
+import Chart from "@/ui/dashboard/chart";
 
 const Dashboard: React.FC = () => {
   return (
     <div>
+      <Chart />
     </div>
   );
 };
