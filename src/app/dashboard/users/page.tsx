@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Search, Plus, Eye, Trash } from "lucide-react";
+import Link from "next/link";
 
 interface User {
   name: string;
@@ -104,15 +105,17 @@ const Users: React.FC = () => {
         <div className="flex items-center space-x-2">
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search for user..."
             value={searchTerm}
             onChange={handleSearchChange}
             className="p-2 bg-gray-700 rounded-lg text-white placeholder-gray-400"
           />
-          <button className="p-2 bg-blue-500 rounded-lg text-white flex items-center hover:bg-blue-600 transition">
-            <Plus className="mr-2" />
-            Add New
-          </button>
+          <Link href="/dashboard/adduser/">
+            <button className="p-2 bg-blue-500 rounded-lg text-white flex items-center hover:bg-blue-600 transition">
+              <Plus className="mr-2" />
+              Add New
+            </button>
+          </Link>
         </div>
       </div>
       <table className="w-full table-auto mb-4">
