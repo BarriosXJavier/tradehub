@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description: "Next App Admin Management System",
 };
 
+
 export default function DashboardLayout({
   children,
 }: Readonly<{
@@ -18,8 +19,8 @@ export default function DashboardLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} min-h-screen`}>
-        <div className="flex h-screen space-x-6">
+      <body className={`${GeistSans.className} min-h-screen flex flex-col`}>
+        <div className="flex flex-1">
           <Sidebar className="w-64" />
           <div className="flex flex-col flex-1">
             <Dashnav className="h-16" />
@@ -27,7 +28,7 @@ export default function DashboardLayout({
           </div>
           <RightBar className="w-64" />
         </div>
-        <Footer />
+        <Footer className="w-full" />
       </body>
     </html>
   );

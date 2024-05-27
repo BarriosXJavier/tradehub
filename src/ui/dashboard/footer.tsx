@@ -2,15 +2,19 @@ import React from "react";
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
-const Footer = () => {
+interface FooterProps {
+  className?: String;
+}
+
+const Footer: React.FC<FooterProps> = ({ className }) => {
   return (
-    <footer className="bg-[#151c2c] text-white py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-between">
+    <footer className="bg-[#151c2c] text-white py-8 w-full">
+      <div className="mx-auto px-4">
+        <div className="flex justify-between">
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h2 className="text-2xl font-bold mb-4">TradeHub</h2>
             <p className="text-gray-400">
-              Efficient dashboards for you are is our topmost priority.
+              Efficient dashboards for you are our topmost priority.
             </p>
           </div>
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
