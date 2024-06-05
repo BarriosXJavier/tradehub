@@ -1,6 +1,9 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { Bell, MessageSquare, Globe, Search } from "lucide-react";
+import { Bell, MessageSquare, Globe, Search, User2Icon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import LoginPage from "@/app/dashboard/login/page";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -21,6 +24,9 @@ const Navbar = () => {
           <MessageSquare className="w-5 h-5" />
           <Bell className="w-5 h-5" />
           <Globe className="w-5 h-5" />
+          <Link href="../dashboard/login">
+            <User2Icon />
+          </Link>
         </div>
       </div>
     </div>
