@@ -6,7 +6,7 @@ import Revenue from "./revenue/page";
 import Reports from "./reports/page";
 import Help from "./help/page";
 
-const Dashboard: React.FC = () => {
+const LandingPage: React.FC = () => {
   return (
     <div className="flex flex-col space-y-4">
       <Users />
@@ -20,4 +20,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default LandingPage;
