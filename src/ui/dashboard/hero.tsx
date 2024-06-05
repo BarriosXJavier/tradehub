@@ -25,7 +25,7 @@ const HeroSection = () => {
                 src="/hero.jpg"
                 width={550}
                 height={550}
-                alt="Hero Product"
+                alt="Hero Section Image"
                 className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
               />
             </motion.div>
@@ -39,7 +39,7 @@ const HeroSection = () => {
                 TradeHub: Simple and Efficient Dashboard Solutions For Your
                 Business
               </h1>
-              <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+              <p className="mx-auto max-w-[700px] text-white md:text-xl dark:text-gray-400">
                 Unlock powerful insights, streamline operations, and drive
                 growth with our comprehensive ecommerce dashboard.
               </p>
