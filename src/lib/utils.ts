@@ -20,7 +20,7 @@ export const connectToDB = async (): Promise<void> => {
     const db = await mongoose.connect(process.env.MONGODB, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    } as mongoose.ConnectOptions);
+    } as mongoose.ConnectOptions);  
 
     isConnected = db.connection.readyState === 1;
     console.log("Connected to MongoDB");

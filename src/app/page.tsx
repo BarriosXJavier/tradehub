@@ -11,26 +11,12 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import Homenav from "@/ui/dashboard/homenav";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center bg-white shadow-md text-black">
-        <Link
-          href="#"
-          className="flex items-center justify-center"
-          prefetch={false}
-        >
-          <MountainIcon className="h-6 w-6" />
-          <span className="sr-only">TradeHub</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <NavLink href="#" label="Orders" />
-          <NavLink href="#" label="Products" />
-          <NavLink href="#" label="Customers" />
-          <NavLink href="#" label="Analytics" />
-        </nav>
-      </header>
+      <Homenav />
       <main className="flex-1">
         <motion.section
           className="w-full pt-12 md:pt-24 lg:pt-32 border-y"
@@ -46,7 +32,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <Image
-                  src="/placeholder.svg"
+                  src="/hero.jpg"
                   width={550}
                   height={550}
                   alt="Hero Product"
@@ -139,54 +125,9 @@ export default function Home() {
           </div>
         </motion.section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-gray-50 dark:bg-gray-900">
-        <p className="text-xs text-gray-500 dark:text-gray-400">
-          &copy; 2024 Acme Ecommerce. All rights reserved.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <NavLink href="#" label="Terms of Service" />
-          <NavLink href="#" label="Privacy" />
-        </nav>
-      </footer>
     </div>
   );
 }
-
-type MountainIconProps = React.SVGProps<SVGSVGElement>;
-
-function MountainIcon(props: MountainIconProps) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-    </svg>
-  );
-}
-
-interface NavLinkProps {
-  href: string;
-  label: string;
-}
-
-const NavLink: React.FC<NavLinkProps> = ({ href, label }) => (
-  <Link
-    href={href}
-    className="text-sm font-medium hover:underline underline-offset-4"
-    prefetch={false}
-  >
-    {label}
-  </Link>
-);
 
 interface InsightCardProps {
   title: string;
