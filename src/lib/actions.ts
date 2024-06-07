@@ -189,20 +189,21 @@ export const deleteProduct = async (formData: FormData) => {
   revalidatePath("/dashboard/products");
 };
 
-export const authenticate = async (formData: FormData) => {
-  const { username, password } = Object.fromEntries(formData.entries()) as {
-    username: string;
-    password: string;
-  };
+// export const authenticate = async (formData: FormData) => {
+//   const { username, password } = Object.fromEntries(formData.entries()) as {
+//     username: string;
+//     password: string;
+//   };
 
-  try {
-    const signIn = new SignIn();
-    await signIn.authenticate({ identifier: username, password });
-  } catch (err: any) {
-    console.error(err);
-    if (err.message.includes("CredentialsSignin")) {
-      return "Wrong Credentials";
-    }
-    throw err;
-  }
-};
+//   try {
+//     const signIn = new SignIn();
+//     await signIn.authenticate({ identifier: username, password });
+//   } catch (err: any) {
+//     console.error(err);
+//     if (err.message.includes("CredentialsSignin")) {
+//       return "Wrong Credentials";
+//     }
+//     throw err;
+//   }
+// };
+
