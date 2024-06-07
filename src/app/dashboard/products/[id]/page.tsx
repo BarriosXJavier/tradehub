@@ -1,3 +1,5 @@
+"use client";
+
 import { updateProduct } from "@/lib/actions";
 import { fetchProduct } from "@/lib/data";
 import Image from "next/image";
