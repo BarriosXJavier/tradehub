@@ -60,7 +60,3 @@ export const fetchProduct = async (id) => {
     throw new Error("Failed to fetch product!");
   }
 };
-
-// DUMMY DATA
-
-
