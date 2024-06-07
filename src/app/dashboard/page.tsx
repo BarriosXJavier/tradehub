@@ -10,8 +10,8 @@ const LandingPage: React.FC = () => {
   return (
     <div className="flex flex-col space-y-4">
       <Users searchParams={{
-        q: undefined,
-        page: undefined
+        q: "",
+        page: 1
       }} />
       <Products />
       <Transactions />
