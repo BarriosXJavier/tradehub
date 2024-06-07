@@ -1,7 +1,7 @@
-import { updateProduct } from "@/app/lib/actions";
-import { fetchProduct } from "./lib/data";
+import { updateProduct } from "@/lib/actions";
+import { fetchProduct } from "@/lib/data";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 interface Product {
   id: string;
@@ -22,7 +22,24 @@ interface SingleProductPageProps {
 
 const SingleProductPage: FC<SingleProductPageProps> = ({ params }) => {
   const { id } = params;
-  const product: Product = fetchProduct(id); // Assuming fetchProduct returns Product type
+  const [product, setProduct] = useState<Product | null>(null);
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const fetchedProduct = await fetchProduct(id);
+        setProduct(fetchedProduct);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchProductData();
+  }, [id]);
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -73,7 +90,7 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ params }) => {
               <input
                 type="text"
                 name="color"
-                defaultValue={product.color || "color"}
+                defaultValue={product.color || ""}
                 className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
             </label>
@@ -82,7 +99,7 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ params }) => {
               <textarea
                 name="size"
                 rows={4}
-                defaultValue={product.size || "size"}
+                defaultValue={product.size || ""}
                 className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               ></textarea>
             </label>
@@ -91,7 +108,7 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ params }) => {
               <select
                 name="cat"
                 id="cat"
-                defaultValue={product.cat}
+                defaultValue={product.cat || ""}
                 className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               >
                 <option value="kitchen">Kitchen</option>
@@ -103,7 +120,7 @@ const SingleProductPage: FC<SingleProductPageProps> = ({ params }) => {
               <textarea
                 name="desc"
                 rows={6}
-                defaultValue={product.desc}
+                defaultValue={product.desc || ""}
                 className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               ></textarea>
             </label>
