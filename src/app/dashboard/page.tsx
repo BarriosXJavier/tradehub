@@ -9,7 +9,10 @@ import Help from "./help/page";
 const LandingPage: React.FC = () => {
   return (
     <div className="flex flex-col space-y-4">
-      <Users />
+      <Users searchParams={{
+        q: undefined,
+        page: undefined
+      }} />
       <Products />
       <Transactions />
       <Chart />
