@@ -119,7 +119,7 @@ const HelpCenterPage: FC = () => {
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="text-center">
           <h1 className="text-3xl md:text-4xl font-bold">Help Center</h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-2 text-lg">
+          <p className="text-white dark:text-gray-400 mt-2 text-lg">
             Find answers to your questions about managing your ecommerce
             dashboard.
           </p>
@@ -130,11 +130,11 @@ const HelpCenterPage: FC = () => {
               key={index}
               className="border rounded-lg overflow-hidden"
             >
-              <CollapsibleTrigger className="flex items-center justify-between bg-gray-100 dark:bg-gray-800 px-6 py-4 cursor-pointer">
+              <CollapsibleTrigger className="flex items-center justify-between dark:bg-gray-800 px-6 py-4 cursor-pointer">
                 <h3 className="text-lg font-medium">{item.question}</h3>
                 <ChevronDownIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 transition-transform [&[data-state=open]]:rotate-180" />
               </CollapsibleTrigger>
-              <CollapsibleContent className="bg-white dark:bg-gray-950 px-6 py-4 text-gray-500 dark:text-gray-400">
+              <CollapsibleContent className="bg-gray-100 dark:bg-gray-950 px-6 py-4 text-gray-500 dark:text-gray-400">
                 {item.answer}
               </CollapsibleContent>
             </Collapsible>
