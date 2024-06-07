@@ -1,33 +1,45 @@
 "use client";
 
-import { useParams, usePathname, useRouter } from "next/navigation";
-import React from "react";
+import { Search as SearchIcon } from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
-interface SearchBarProps {
+interface SearchProps {
   placeholder: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ placeholder }) => {
-  const searchParams = useParams();
+const Search: React.FC<SearchProps> = ({ placeholder }) => {
+  const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathname = usePathname();
 
-  const params = new URLSearchParams(searchParams as any);
-  params.set("test", "value");
+  const handleSearch = useDebouncedCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const params = new URLSearchParams(searchParams);
 
-  replace(`${pathname}?${params.toString()}`);
+      params.set("page", "1");
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const params = new URLSearchParams(searchParams as any);
-    params.set("q", e.target.value);
-    replace(`${pathname}?${params.toString()}`);
-  };
+      if (e.target.value) {
+        e.target.value.length > 2 && params.set("q", e.target.value);
+      } else {
+        params.delete("q");
+      }
+      replace(`${pathname}?${params}`);
+    },
+    300
+  );
 
   return (
-    <div>
-      <input type="text" placeholder={placeholder} onChange={handleSearch} />
+    <div className="flex items-center border border-gray-300 rounded-md p-2">
+      <SearchIcon className="text-gray-500" />
+      <input
+        type="text"
+        placeholder={placeholder}
+        className="ml-2 p-1 border-none outline-none w-full"
+        onChange={handleSearch}
+      />
     </div>
   );
 };
 
-export default SearchBar;
+export default Search;

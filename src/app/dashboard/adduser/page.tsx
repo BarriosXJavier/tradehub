@@ -1,98 +1,77 @@
-"use client";
 
-import React, { useState } from "react";
+"use client"
 
-const AddUser: React.FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
+import { addUser } from '@/lib/actions';
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const validateEmail = (email: string) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    setError(null);
-    setSuccess(null);
-
-    if (!name || !email) {
-      setError("Both fields are required.");
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      setError("Please enter a valid email address.");
-      return;
-    }
-
-    // Add logic to handle form submission
-    setSuccess("User added successfully!");
-  };
-
+const AddUserPage: React.FC = () => {
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border border-gray-300 rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold mb-4">Add User</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Name:
-          </label>
+    <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <div className="max-w-lg mx-auto">
+        <form action={addUser} className="space-y-4">
           <input
             type="text"
-            id="name"
-            value={name}
-            onChange={handleNameChange}
-            className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black bg-white"
+            placeholder="Username"
+            name="username"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            required
           />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Email:
-          </label>
           <input
             type="email"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-            className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-black bg-white"
+            placeholder="Email"
+            name="email"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            required
           />
-        </div>
-        {error && (
-          <p className="text-red-500 text-sm mb-4" role="alert">
-            {error}
-          </p>
-        )}
-        {success && (
-          <p className="text-green-500 text-sm mb-4" role="status">
-            {success}
-          </p>
-        )}
-        <button
-          type="submit"
-          className="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
-        >
-          Add User
-        </button>
-      </form>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            required
+          />
+          <input
+            type="phone"
+            placeholder="Phone"
+            name="phone"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          />
+          <select
+            name="isAdmin"
+            id="isAdmin"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            defaultValue={'false'}
+          >
+            <option value={'false'}>Is Admin?</option>
+            <option value={'true'}>Yes</option>
+            <option value={'false'}>No</option>
+          </select>
+          <select
+            name="isActive"
+            id="isActive"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            defaultValue={'true'}
+          >
+            <option value={'true'}>Is Active?</option>
+            <option value={'true'}>Yes</option>
+            <option value={'false'}>No</option>
+          </select>
+          <textarea
+            name="address"
+            id="address"
+            rows={6}
+            placeholder="Address"
+            className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          ></textarea>
+          <button
+            type="submit"
+            className="block w-full px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default AddUser;
+export default AddUserPage;

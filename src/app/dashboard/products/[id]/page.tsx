@@ -1,115 +1,115 @@
 import { updateProduct } from "@/app/lib/actions";
-import { fetchProduct } from "@/app/lib/data";
+import { fetchProduct } from "./lib/data";
 import Image from "next/image";
+import { FC } from "react";
 
-const SingleProductPage = async ({ params }) => {
+interface Product {
+  id: string;
+  title: string;
+  price: number;
+  stock: number;
+  color?: string;
+  size?: string;
+  cat?: string;
+  desc?: string;
+}
+
+interface SingleProductPageProps {
+  params: {
+    id: string;
+  };
+}
+
+const SingleProductPage: FC<SingleProductPageProps> = ({ params }) => {
   const { id } = params;
-  const product = await fetchProduct(id);
+  const product: Product = fetchProduct(id); // Assuming fetchProduct returns Product type
 
   return (
-    <div className="max-w-screen-md mx-auto p-4">
-      <div className="flex flex-col md:flex-row md:justify-between mb-6">
-        <div className="w-full md:w-1/3 mb-4 md:mb-0">
-          <div className="relative w-full h-64 md:h-80 bg-gray-200">
+    <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <div className="grid gap-6 row-gap-5 md:grid-cols-2">
+        <div className="space-y-4">
+          <div className="relative overflow-hidden rounded shadow-lg">
             <Image
               src="/noavatar.png"
-              alt={product.title}
-              layout="fill"
-              objectFit="cover"
+              alt=""
+              fill
+              className="object-cover w-full h-96"
             />
           </div>
-          <h1 className="text-2xl font-bold mt-4">{product.title}</h1>
+          <h2 className="text-2xl font-bold">{product.title}</h2>
         </div>
-        <div className="w-full md:w-2/3">
+        <div className="space-y-4">
           <form action={updateProduct} className="space-y-4">
             <input type="hidden" name="id" value={product.id} />
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Title
-              </label>
+            <label className="block">
+              Title
               <input
                 type="text"
                 name="title"
-                placeholder={product.title}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                defaultValue={product.title}
+                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Price
-              </label>
+            </label>
+            <label className="block">
+              Price
               <input
                 type="number"
                 name="price"
-                placeholder={product.price}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                defaultValue={product.price.toString()}
+                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Stock
-              </label>
+            </label>
+            <label className="block">
+              Stock
               <input
                 type="number"
                 name="stock"
-                placeholder={product.stock}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                defaultValue={product.stock.toString()}
+                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Color
-              </label>
+            </label>
+            <label className="block">
+              Color
               <input
                 type="text"
                 name="color"
-                placeholder={product.color || "color"}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                defaultValue={product.color || "color"}
+                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Size
-              </label>
+            </label>
+            <label className="block">
+              Size
               <textarea
                 name="size"
-                placeholder={product.size || "size"}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Category
-              </label>
+                rows={4}
+                defaultValue={product.size || "size"}
+                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+              ></textarea>
+            </label>
+            <label className="block">
+              Category
               <select
                 name="cat"
                 id="cat"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                defaultValue={product.cat}
+                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               >
                 <option value="kitchen">Kitchen</option>
                 <option value="computers">Computers</option>
               </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Description
-              </label>
+            </label>
+            <label className="block">
+              Description
               <textarea
                 name="desc"
-                id="desc"
-                rows="10"
-                placeholder={product.desc}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                rows={6}
+                defaultValue={product.desc}
+                className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
               ></textarea>
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Update
-              </button>
-            </div>
+            </label>
+            <button className="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+              Update
+            </button>
           </form>
         </div>
       </div>
