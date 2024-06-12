@@ -2,6 +2,14 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Deployed
+
+<https://tradehubke.netlify.app/>
+
+* Author: David Muriithi
+* [Project Blog](https://www.linkedin.com/feed/update/urn:li:activity:7206547443264405504?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7206547443264405504%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3Bpm7Dn6RAQnmxaucA5P7jmA%3D%3D)
+  * [LinkedIn](https://www.linkedin.com/in/maksim404/)
+
 ## Getting Started
 
 First, run the development server:
@@ -37,6 +45,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Deployed
 
-(<https://tradehubke.netlify.app/>)
